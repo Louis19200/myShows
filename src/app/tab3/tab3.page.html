@@ -1,17 +1,153 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title>Explorer</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Explorer</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <!-- Search Bar Section -->
+  <div class="search-container">
+    <ion-searchbar 
+      [(ngModel)]="searchQuery" 
+      placeholder="Chercher un film ou une série..."
+      (ionChange)="onSearch(searchQuery)"
+      animated="true">
+    </ion-searchbar>
+    <ion-button 
+      *ngIf="searchQuery" 
+      fill="clear" 
+      color="danger"
+      (click)="clearSearch()"
+      class="clear-btn">
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- Loading Spinner -->
+  <ion-spinner *ngIf="isLoading" class="spinner"></ion-spinner>
+
+  <!-- Error Message -->
+  <ion-card *ngIf="error" color="danger" class="error-card">
+    <ion-card-content>
+      {{ error }}
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Selected Item Details -->
+  <div *ngIf="selectedItem" class="details-container">
+    <ion-card class="details-card">
+      <button ion-button fill="clear" (click)="closeDetails()" class="close-btn">
+        <ion-icon name="close"></ion-icon>
+      </button>
+      
+      <div class="poster-section">
+        <img 
+          *ngIf="selectedItem.Poster && selectedItem.Poster !== 'N/A'" 
+          [src]="selectedItem.Poster" 
+          alt="{{ selectedItem.Title }}"
+          class="poster-image">
+        <div *ngIf="!selectedItem.Poster || selectedItem.Poster === 'N/A'" class="no-poster">
+          Pas d'affiche disponible
+        </div>
+      </div>
+
+      <ion-card-content class="details-content">
+        <h2 class="title">{{ selectedItem.Title }}</h2>
+        
+        <div class="meta-info">
+          <span class="meta-item" *ngIf="selectedItem.Year">
+            <strong>Année:</strong> {{ selectedItem.Year }}
+          </span>
+          <span class="meta-item" *ngIf="selectedItem.Type">
+            <strong>Type:</strong> {{ selectedItem.Type === 'movie' ? 'Film' : 'Série' }}
+          </span>
+          <span class="meta-item" *ngIf="selectedItem.Rated && selectedItem.Rated !== 'N/A'">
+            <strong>Classification:</strong> {{ selectedItem.Rated }}
+          </span>
+        </div>
+
+        <div class="rating-section" *ngIf="selectedItem.imdbRating && selectedItem.imdbRating !== 'N/A'">
+          <div class="rating-content">
+            <span class="rating-label">Note IMDb</span>
+            <span class="rating-value">⭐ {{ selectedItem.imdbRating }}/10</span>
+          </div>
+          <div class="rating-votes" *ngIf="selectedItem.imdbVotes && selectedItem.imdbVotes !== 'N/A'">
+            ({{ selectedItem.imdbVotes }} votes)
+          </div>
+        </div>
+
+        <div class="details-section">
+          <strong>Genre:</strong>
+          <p class="details-text" *ngIf="selectedItem.Genre && selectedItem.Genre !== 'N/A'">{{ selectedItem.Genre }}</p>
+          <p class="details-text" *ngIf="!selectedItem.Genre || selectedItem.Genre === 'N/A'">Non disponible</p>
+        </div>
+
+        <div class="details-section">
+          <strong>Réalisateur:</strong>
+          <p class="details-text" *ngIf="selectedItem.Director && selectedItem.Director !== 'N/A'">{{ selectedItem.Director }}</p>
+          <p class="details-text" *ngIf="!selectedItem.Director || selectedItem.Director === 'N/A'">Non disponible</p>
+        </div>
+
+        <div class="details-section">
+          <strong>Acteurs:</strong>
+          <p class="details-text" *ngIf="selectedItem.Actors && selectedItem.Actors !== 'N/A'">{{ selectedItem.Actors }}</p>
+          <p class="details-text" *ngIf="!selectedItem.Actors || selectedItem.Actors === 'N/A'">Non disponible</p>
+        </div>
+
+        <div class="details-section plot-section">
+          <strong>Synopsys:</strong>
+          <p class="details-text" *ngIf="selectedItem.Plot && selectedItem.Plot !== 'N/A'">{{ selectedItem.Plot }}</p>
+          <p class="details-text" *ngIf="!selectedItem.Plot || selectedItem.Plot === 'N/A'">Non disponible</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Search Results List -->
+  <div *ngIf="!selectedItem && searchResults.length > 0" class="results-container">
+    <ion-list class="results-list">
+      <ion-item-divider class="results-header">
+        {{ searchResults.length }} résultat(s) trouvé(s)
+      </ion-item-divider>
+      
+      <ion-item 
+        *ngFor="let result of searchResults" 
+        (click)="onSelectResult(result)"
+        class="result-item"
+        button>
+        <img 
+          *ngIf="result.Poster && result.Poster !== 'N/A'" 
+          slot="start" 
+          [src]="result.Poster" 
+          alt="{{ result.Title }}"
+          class="result-poster">
+        <div *ngIf="!result.Poster || result.Poster === 'N/A'" slot="start" class="no-image-placeholder">
+          Pas d'image
+        </div>
+        
+        <ion-label class="result-label">
+          <h3 class="result-title">{{ result.Title }}</h3>
+          <p class="result-meta">{{ result.Year }} - {{ result.Type === 'movie' ? 'Film' : 'Série' }}</p>
+          <p class="result-rating" *ngIf="result.imdbRating && result.imdbRating !== 'N/A'">
+            ⭐ {{ result.imdbRating }}/10
+          </p>
+          <ion-spinner *ngIf="result.isLoadingRating" style="width: 16px; height: 16px;" name="crescent"></ion-spinner>
+        </ion-label>
+        
+        <ion-icon name="chevron-forward" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!isLoading && !selectedItem && (searchResults.length === 0 && hasSearched === false)" class="empty-state">
+    <ion-icon name="search"></ion-icon>
+    <p>Recherchez un film ou une série pour commencer</p>
+  </div>
 </ion-content>
