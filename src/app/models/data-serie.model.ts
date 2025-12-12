@@ -1,3 +1,8 @@
+export interface Episode {
+  number: number;
+  title: string;
+}
+
 export interface DataSerieModel {
   id: number;
   name: string;
@@ -12,4 +17,5 @@ export interface DataSerieModel {
   episodeToBeSeenTitle: string;
   note: number;
   lastDate: Date;
+  episodes?: Episode[];
 }

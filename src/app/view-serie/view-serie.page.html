@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ serie?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  @if (serie) {
+    <div style="text-align: center; padding: 20px;">
+      <img [src]="serie.imageUrl" alt="{{ serie.name }}" style="width: 150px; height: 225px; object-fit: cover; border-radius: 8px;" />
+    </div>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ serie.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Description:</strong> {{ serie.description }}</p>
+        <p><strong>Nombre de saisons:</strong> {{ serie.nbSeasons }}</p>
+        <p><strong>Nombre d'épisodes:</strong> {{ serie.nbEpisodes }}</p>
+        <p><strong>Note:</strong> {{ serie.note }}/5</p>
+        <p><strong>Prochain épisode:</strong> {{ serie.seasonToSee | seasonEpisode : serie.episodeToSee }}</p>
+        <p><strong>Titre de l'épisode:</strong> {{ serie.episodeToSeeTitle }}</p>
+        <p><strong>Épisodes vus:</strong> {{ serie.episodeToBeSeen }}/{{ serie.nbEpisodes }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="block" color="primary" (click)="onEpisodeWatched()">
+      <ion-icon slot="start" name="checkbox-outline"></ion-icon>
+      Marquer comme visionné
+    </ion-button>
+  } @else {
+    <ion-text color="medium" style="text-align: center; padding: 20px;">
+      <p>Série non trouvée</p>
+    </ion-text>
+  }
+</ion-content>

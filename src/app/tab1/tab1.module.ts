@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { SeasonEpisodePipe } from '../pipes/season-episode-pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { SeasonEpisodePipe } from '../pipes/season-episode-pipe';
     FormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
-    SeasonEpisodePipe
+    SeasonEpisodePipe,
+    RouterModule
   ],
   declarations: [Tab1Page]
 })

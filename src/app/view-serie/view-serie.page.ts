@@ -1,29 +1,44 @@
-import { Component, inject } from '@angular/core';
-import { RefresherCustomEvent } from '@ionic/angular';
-
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location, CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 import { DataService, DataSerieModel } from '../services/data.service';
+import { SeasonEpisodePipe } from '../pipes/season-episode-pipe';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-  standalone: false,
+  selector: 'app-view-serie',
+  templateUrl: './view-serie.page.html',
+  styleUrls: ['./view-serie.page.scss'],
+  standalone: true,
+  imports: [CommonModule, IonicModule, SeasonEpisodePipe]
 })
-export class HomePage {
-  private data = inject(DataService);
+export class ViewSeriePage implements OnInit {
+  private dataService = inject(DataService);
+  private route = inject(ActivatedRoute);
+  private location = inject(Location);
+  
+  serie: DataSerieModel | null = null;
+
   constructor() {}
 
-  refresh(ev: any) {
-    setTimeout(() => {
-      (ev as RefresherCustomEvent).detail.complete();
-    }, 3000);
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      this.serie = this.dataService.getDataSerieById(id);
+    });
   }
 
-  getDataSeries(): DataSerieModel[] {
-    return this.data.getDataSeries();
+  goBack() {
+    this.location.back();
   }
 
-  onEpisodeWatched(serie: DataSerieModel) {
+  onEpisodeWatched() {
+    if (!this.serie) {
+      return;
+    }
+
+    const serie = this.serie;
+
     // Don't increment if already finished
     if (serie.seasonToSee === 0) {
       return;

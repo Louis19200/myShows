@@ -24,12 +24,18 @@ export class DataService {
       nbSeasons: 1,
       nbEpisodes: 4,
       seasonToSee: 1,
-      episodeToSee: 4,
+      episodeToSee: 1,
       episodeToBeSeen: 0,
       episodeToSeeTitle: "Twice Born",
-      episodeToBeSeenTitle: "",
+      episodeToBeSeenTitle: "The Hidden Hand",
       note: 4.7,
       lastDate: new Date(),
+      episodes: [
+        { number: 1, title: "Twice Born" },
+        { number: 2, title: "The Hidden Hand" },
+        { number: 3, title: "The Power of the Light" },
+        { number: 4, title: "An Imperial Gift" }
+      ]
     },
     {
       id: 1,
@@ -45,6 +51,16 @@ export class DataService {
       episodeToBeSeenTitle: "From Upshott With Love",
       note: 4.9,
       lastDate: new Date(),
+      episodes: [
+        { number: 1, title: "Slow Horses" },
+        { number: 2, title: "Dead Lions" },
+        { number: 3, title: "Real Field" },
+        { number: 4, title: "Thy Ravens" },
+        { number: 5, title: "Isolation" },
+        { number: 6, title: "Last Stop" },
+        { number: 7, title: "From Upshott With Love" },
+        { number: 8, title: "Slough House" }
+      ]
     },
     {
       id: 2,
@@ -60,6 +76,16 @@ export class DataService {
       episodeToBeSeenTitle: "Kishi Kaisei",
       note: 4.9,
       lastDate: new Date(),
+      episodes: [
+        { number: 1, title: "The Test" },
+        { number: 2, title: "Kishi Kaisei" },
+        { number: 3, title: "The Writing in the Sky" },
+        { number: 4, title: "Shinjuku" },
+        { number: 5, title: "Tokyo, I'm Home" },
+        { number: 6, title: "The Snare" },
+        { number: 7, title: "The Night Watch" },
+        { number: 8, title: "Kaminari Yama" }
+      ]
     },
     {
       id: 3,
@@ -75,6 +101,16 @@ export class DataService {
       episodeToBeSeenTitle: "",
       note: 4.9,
       lastDate: new Date(),
+      episodes: [
+        { number: 1, title: "The Dive" },
+        { number: 2, title: "The Engineer" },
+        { number: 3, title: "Solo" },
+        { number: 4, title: "The Engineer" },
+        { number: 5, title: "Descent" },
+        { number: 6, title: "The Engineer" },
+        { number: 7, title: "The Engineer" },
+        { number: 8, title: "Descent" }
+      ]
     },
     {
       id: 4,
@@ -90,6 +126,16 @@ export class DataService {
       episodeToBeSeenTitle: "",
       note: 4.8,
       lastDate: new Date(),
+      episodes: [
+        { number: 1, title: "The Killing Floor" },
+        { number: 2, title: "First Contact" },
+        { number: 3, title: "Answers" },
+        { number: 4, title: "October Sky" },
+        { number: 5, title: "The Hospitality Suite" },
+        { number: 6, title: "The Fix" },
+        { number: 7, title: "Second Sight" },
+        { number: 8, title: "Clearing Out" }
+      ]
     },
     {
       id: 5,
@@ -105,6 +151,16 @@ export class DataService {
       episodeToBeSeenTitle: "",
       note: 4.8,
       lastDate: new Date(),
+      episodes: [
+        { number: 1, title: "Narkina 5" },
+        { number: 2, title: "Three Lessons" },
+        { number: 3, title: "Reckoning" },
+        { number: 4, title: "The Axe Forgets" },
+        { number: 5, title: "The Narkina 5 Prisoner Exchange Program" },
+        { number: 6, title: "The Eye" },
+        { number: 7, title: "Cassian" },
+        { number: 8, title: "Hopes and Fears" }
+      ]
     },
     {
       id: 6,
@@ -120,6 +176,16 @@ export class DataService {
       episodeToBeSeenTitle: "",
       note: 4.9,
       lastDate: new Date(),
+      episodes: [
+        { number: 1, title: "Welcome to the Farm" },
+        { number: 2, title: "It's Not What You Know" },
+        { number: 3, title: "The Lamb and the Lion" },
+        { number: 4, title: "The Duchess" },
+        { number: 5, title: "Where There's Smoke" },
+        { number: 6, title: "The Devil's Due" },
+        { number: 7, title: "House Cleaning" },
+        { number: 8, title: "Beastie Boys" }
+      ]
     },
     {
       id: 7,
@@ -135,6 +201,18 @@ export class DataService {
       episodeToBeSeenTitle: "",
       note: 4.9,
       lastDate: new Date(),
+      episodes: [
+        { number: 1, title: "Crimson Sky" },
+        { number: 2, title: "Unfamiliar Ground" },
+        { number: 3, title: "The Woman Who Would Not Wait" },
+        { number: 4, title: "Proof" },
+        { number: 5, title: "Barbarian" },
+        { number: 6, title: "The Last Moment of the World" },
+        { number: 7, title: "The Bridge" },
+        { number: 8, title: "The Siege" },
+        { number: 9, title: "Sacrifice" },
+        { number: 10, title: "Shogun" }
+      ]
     }
   ];
 
