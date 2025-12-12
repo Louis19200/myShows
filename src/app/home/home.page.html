@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Séries
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Séries
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    @for (serie of getDataSeries(); track serie) {
+      <ion-item>
+        <img slot="start" [src]="serie.imageUrl" alt="{{ serie.name }}" style="width: 60px; height: 90px; object-fit: cover;" />
+        <ion-label>
+          <h2>{{ serie.name }}</h2>
+          <p>{{ serie.seasonToSee | seasonEpisode : serie.episodeToSee }}</p>
+          <p style="color:white">{{ serie.episodeToSeeTitle }}</p>
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="onEpisodeWatched(serie)" ></ion-checkbox>
+      </ion-item>
+    }
+  </ion-list>
+</ion-content>
