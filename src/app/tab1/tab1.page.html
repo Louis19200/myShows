@@ -1,17 +1,29 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Séries
-    </ion-title>
+    <ion-title>Séries</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChange($event)">
+    <ion-segment-button value="toWatch">
+      <ion-label>À regarder</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="finished">
+      <ion-label>Terminés</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-list>
+    @for (serie of getFilteredSeries(); track serie) {
+      <ion-item>
+        <img slot="start" [src]="serie.imageUrl" alt="{{ serie.name }}" style="width: 60px; height: 90px; object-fit: cover;" />
+        <ion-label>
+          <h2>{{ serie.name }}</h2>
+          <p>{{ serie.seasonToSee | seasonEpisode : serie.episodeToSee }}</p>
+          <p>{{ serie.episodeToSeeTitle }}</p>
+        </ion-label>
+      </ion-item>
+    }
+  </ion-list>
 </ion-content>
