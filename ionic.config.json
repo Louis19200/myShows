@@ -1,5 +1,7 @@
 {
   "name": "myShows",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

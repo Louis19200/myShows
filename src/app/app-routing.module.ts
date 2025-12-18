@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path: 'view-serie',
     loadChildren: () => import('./view-serie/view-serie.module').then( m => m.ViewSeriePageModule)
-  }
+  },
+  {
+  path: 'edit-profile',
+  loadChildren: () => import('./edit-profile/edit-profile.module').then(m => m.EditProfilePageModule)
+}
 ];
 @NgModule({
   imports: [
