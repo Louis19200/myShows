@@ -1,18 +1,20 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title>À venir</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-content>
+  <ion-list>
+    @for (serie of getUpcomingSeries(); track serie) {
+      <ion-item [routerLink]="['/view-serie', serie.id]">
+        <img slot="start" [src]="serie.imageUrl" alt="{{ serie.name }}" style="width: 60px; height: 90px; object-fit: cover;" />
+        <ion-label>
+          <h2>{{ serie.name }}</h2>
+          <p>{{ serie.description }}</p>
+        </ion-label>
+      </ion-item>
+    }
+  </ion-list>
 </ion-content>
 

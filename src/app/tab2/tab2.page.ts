@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DataService, DataSerieModel } from '../services/data.service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,7 +8,12 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class Tab2Page {
+  private data = inject(DataService);
 
   constructor() {}
 
+  getUpcomingSeries(): DataSerieModel[] {
+    const series = this.data.getDataSeries();
+    return series.filter(s => s.isUpcoming);
+  }
 }

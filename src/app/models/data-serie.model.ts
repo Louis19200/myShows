@@ -18,4 +18,5 @@ export interface DataSerieModel {
   note: number;
   lastDate: Date;
   episodes?: Episode[];
+  isUpcoming?: boolean;
 }

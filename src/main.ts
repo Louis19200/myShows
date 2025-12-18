@@ -4,3 +4,13 @@ import { AppModule } from './app/app.module';
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
+
+// CHANGE: Add the following import
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+
+// CHANGE: Call the element loader before the `bootstrapModule` call
+defineCustomElements(window);
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.log(err));

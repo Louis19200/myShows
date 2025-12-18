@@ -35,7 +35,8 @@ export class DataService {
         { number: 2, title: "The Hidden Hand" },
         { number: 3, title: "The Power of the Light" },
         { number: 4, title: "An Imperial Gift" }
-      ]
+      ],
+      isUpcoming: false
     },
     {
       id: 1,
@@ -60,7 +61,8 @@ export class DataService {
         { number: 6, title: "Last Stop" },
         { number: 7, title: "From Upshott With Love" },
         { number: 8, title: "Slough House" }
-      ]
+      ],
+      isUpcoming: false
     },
     {
       id: 2,
@@ -85,7 +87,8 @@ export class DataService {
         { number: 6, title: "The Snare" },
         { number: 7, title: "The Night Watch" },
         { number: 8, title: "Kaminari Yama" }
-      ]
+      ],
+      isUpcoming: false
     },
     {
       id: 3,
@@ -110,7 +113,8 @@ export class DataService {
         { number: 6, title: "The Engineer" },
         { number: 7, title: "The Engineer" },
         { number: 8, title: "Descent" }
-      ]
+      ],
+      isUpcoming: false
     },
     {
       id: 4,
@@ -135,7 +139,8 @@ export class DataService {
         { number: 6, title: "The Fix" },
         { number: 7, title: "Second Sight" },
         { number: 8, title: "Clearing Out" }
-      ]
+      ],
+      isUpcoming: false
     },
     {
       id: 5,
@@ -160,7 +165,8 @@ export class DataService {
         { number: 6, title: "The Eye" },
         { number: 7, title: "Cassian" },
         { number: 8, title: "Hopes and Fears" }
-      ]
+      ],
+      isUpcoming: false
     },
     {
       id: 6,
@@ -185,7 +191,8 @@ export class DataService {
         { number: 6, title: "The Devil's Due" },
         { number: 7, title: "House Cleaning" },
         { number: 8, title: "Beastie Boys" }
-      ]
+      ],
+      isUpcoming: false
     },
     {
       id: 7,
@@ -212,7 +219,82 @@ export class DataService {
         { number: 8, title: "The Siege" },
         { number: 9, title: "Sacrifice" },
         { number: 10, title: "Shogun" }
-      ]
+      ],
+      isUpcoming: false
+    },
+    {
+      id: 8,
+      name: "Expats",
+      imageUrl: "assets/pictures/slow_horses.jpg",
+      description: "Une série qui suit les vies complexes de quatre femmes occidentales expatriées à Hong Kong.",
+      nbSeasons: 1,
+      nbEpisodes: 6,
+      seasonToSee: 1,
+      episodeToSee: 1,
+      episodeToBeSeen: 0,
+      episodeToSeeTitle: "Arrivée",
+      episodeToBeSeenTitle: "",
+      note: 4.5,
+      lastDate: new Date(),
+      episodes: [
+        { number: 1, title: "Arrival" },
+        { number: 2, title: "Disconnected" },
+        { number: 3, title: "Secrets" },
+        { number: 4, title: "Lies" },
+        { number: 5, title: "Unraveled" },
+        { number: 6, title: "Change" }
+      ],
+      isUpcoming: true
+    },
+    {
+      id: 9,
+      name: "Rivals",
+      imageUrl: "assets/pictures/reacher.jpg",
+      description: "Une série de compétition entre deux rivaux dans le monde des médias britanniques.",
+      nbSeasons: 1,
+      nbEpisodes: 8,
+      seasonToSee: 1,
+      episodeToSee: 1,
+      episodeToBeSeen: 0,
+      episodeToSeeTitle: "Pilot",
+      episodeToBeSeenTitle: "",
+      note: 4.6,
+      lastDate: new Date(),
+      episodes: [
+        { number: 1, title: "Pilot" },
+        { number: 2, title: "Episode 2" },
+        { number: 3, title: "Episode 3" },
+        { number: 4, title: "Episode 4" },
+        { number: 5, title: "Episode 5" },
+        { number: 6, title: "Episode 6" },
+        { number: 7, title: "Episode 7" },
+        { number: 8, title: "Episode 8" }
+      ],
+      isUpcoming: true
+    },
+    {
+      id: 10,
+      name: "Harlan Coben's Never Lie",
+      imageUrl: "assets/pictures/andor.jpg",
+      description: "Un thriller psychologique basé sur le roman de Harlan Coben.",
+      nbSeasons: 1,
+      nbEpisodes: 6,
+      seasonToSee: 1,
+      episodeToSee: 1,
+      episodeToBeSeen: 0,
+      episodeToSeeTitle: "Pilot",
+      episodeToBeSeenTitle: "",
+      note: 4.7,
+      lastDate: new Date(),
+      episodes: [
+        { number: 1, title: "Never Lie" },
+        { number: 2, title: "Episode 2" },
+        { number: 3, title: "Episode 3" },
+        { number: 4, title: "Episode 4" },
+        { number: 5, title: "Episode 5" },
+        { number: 6, title: "Episode 6" }
+      ],
+      isUpcoming: true
     }
   ];
 
